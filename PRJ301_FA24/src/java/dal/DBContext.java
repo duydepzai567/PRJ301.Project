@@ -4,12 +4,9 @@
  */
 package dal;
 
-import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -20,15 +17,16 @@ public class DBContext {
     protected Connection connection;
 
     public DBContext() {
-
         try {
-            String user = "duy";
-            String pass = "123456";
-            String url = "jdbc:sqlserver://LAPTOP-JNL3LDJO\\SQLEXPRESS:1433;databaseName=QUANLY_KHOHANG";
+            // Replace with your database URL, username, and password
+            String url = "jdbc:sqlserver://localhost:1433;databaseName=QUANLY_KHOHANG";
+            String username = "duy";
+            String password = "123456";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            connection = DriverManager.getConnection(url, user, pass);
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
+            connection = DriverManager.getConnection(url, username, password);
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Error connecting to database: " + e.getMessage());
         }
     }
+
 }
