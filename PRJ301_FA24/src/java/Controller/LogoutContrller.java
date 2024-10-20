@@ -4,8 +4,6 @@
  */
 package Controller;
 
-import dao.UsersDAO;
-import model.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -19,8 +17,8 @@ import jakarta.servlet.http.HttpSession;
  *
  * @author DUCDUY2003
  */
-@WebServlet(name = "LoginController", urlPatterns = {"/login"})
-public class LoginController extends HttpServlet {
+@WebServlet(name = "LogoutContrller", urlPatterns = {"/logout"})
+public class LogoutContrller extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,9 +46,13 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-// Redirect to login page
-        request.getRequestDispatcher("login.jsp").forward(request, response);
-
+        // Invalidate the session
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
+        // Redirect to login page
+        response.sendRedirect("login.jsp");
     }
 
     /**
@@ -64,26 +66,7 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Get username and password from the login form
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-
-        // Create a UsersDAO instance
-        UsersDAO usersDAO = new UsersDAO();
-
-        // Authenticate user by finding matching username and password
-        Users user = usersDAO.findUsernameANDPass(username, password);
-
-        if (user != null) {
-            // User exists, set session attribute for the user and redirect to a dashboard or home page
-            HttpSession session = request.getSession();
-            session.setAttribute("user", user); // Store user details in session
-            response.sendRedirect("home.jsp");  // Redirect to a homepage or dashboard
-        } else {
-            // Invalid credentials, return to login page with an error message
-            request.setAttribute("errorMessage", "Invalid username or password");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
+        processRequest(request, response);
     }
 
     /**

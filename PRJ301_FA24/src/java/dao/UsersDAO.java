@@ -96,7 +96,7 @@ public class UsersDAO extends DBContext {
 
     //Tim username and password
     public Users findUsernameANDPass(String username, String password) {
-        String sql = "select username, [password]  from Users where username = ? and [password] = ?";
+        String sql = "select * from Users where username = ? and password = ?";
         Users user = null;
         try {
             PreparedStatement pst = connection.prepareStatement(sql);
@@ -218,5 +218,13 @@ public class UsersDAO extends DBContext {
             System.out.println("Error updating user: " + e.getMessage());
         }
         return user;
+    }
+    
+    public static void main(String[] args) {
+        UsersDAO dao = new UsersDAO();
+        List<Users> userlist = dao.getAll();
+                for (Users o : userlist) {
+                    System.out.println("o");
+        }
     }
 }
