@@ -15,10 +15,10 @@ import model.Inventory;
  * @author DUCDUY2003
  */
 public class ProductDAO extends DBContext {
-    
+
     PreparedStatement stm;
     ResultSet rs;
-    
+
     private static final String DELETE_Inventory_SQL = "delete from Inventory where ProductID = ?;";
     private static final String UPDATE_Inventory_SQL = "update products set ProductType = ?, Name= ?, Brand =?, MadeIn =?, Price =?, ProductTypeID =? where ProductID = ?;";
 
@@ -72,35 +72,32 @@ public class ProductDAO extends DBContext {
     //select all product
     public List<Inventory> selectAll() {
         List<Inventory> inventorysList = new ArrayList<>();
-        String sql = "SELECT ProductID\n"
-                + "      ,ProductType\n"
-                + "      ,Name\n"
-                + "      ,Brand\n"
-                + "      ,MadeIn\n"
-                + "      ,Price\n"
-                + "  FROM Inventory";
-        
         try {
-            Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            
+            String sql = "SELECT ProductID\n"
+                    + "      ,ProductType\n"
+                    + "      ,Name\n"
+                    + "      ,Brand\n"
+                    + "      ,MadeIn\n"
+                    + "      ,Price\n"
+                    + "  FROM Inventory";
+            stm = connection.prepareStatement(sql);
+            rs = stm.executeQuery(sql);
             while (rs.next()) {
-                Inventory inventory = new Inventory(
-                        rs.getString("ProductType"),
-                        rs.getString("Name"),
-                        rs.getString("Brand"),
-                        rs.getString("MadeIn"),
-                        rs.getString("Price")
-                );
-                inventorysList.add(inventory);
+                String ProductID = String.valueOf(rs.getInt(1));
+                String ProductType = rs.getString(2);
+                String Name = rs.getString(2);
+                String Brand = rs.getString(2);
+                String MadeIn = rs.getString(2);
+                String Price = String.valueOf(rs.getDouble(4));
+                
             }
             rs.close();
-            st.close();
-       
+            stm.close();
+
         } catch (SQLException e) {
             System.out.println(e);
         }
         return inventorysList;
     }
-    
+
 }
