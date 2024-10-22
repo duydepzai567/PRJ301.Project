@@ -10,7 +10,7 @@ package model;
  */
 public class Inventory {
     String  ProductID, ProductType, Name, Brand, MadeIn, Price, ProductTypeID;
-
+    
     public Inventory() {
     }
 
