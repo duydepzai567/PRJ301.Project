@@ -38,6 +38,12 @@
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon fas fa-cog"></i>
+                                    <p>Quản lý xuất nhập kho</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-cog"></i>
                                     <p>Quản lý thiết bị</p>
                                 </a>
                             </li>

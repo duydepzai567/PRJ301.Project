@@ -19,9 +19,6 @@ public class ProductDAO extends DBContext {
     PreparedStatement stm;
     ResultSet rs;
 
-    private static final String DELETE_Inventory_SQL = "delete from Inventory where ProductID = ?;";
-    private static final String UPDATE_Inventory_SQL = "update products set ProductType = ?, Name= ?, Brand =?, MadeIn =?, Price =?, ProductTypeID =? where ProductID = ?;";
-
     // Create or insert product
     public void insert(Inventory i) {
         try {
@@ -89,7 +86,9 @@ public class ProductDAO extends DBContext {
                 String Brand = rs.getString(2);
                 String MadeIn = rs.getString(2);
                 String Price = String.valueOf(rs.getDouble(4));
-                
+
+                Inventory i = new Inventory(ProductID, ProductType, Name, Brand, MadeIn, Price, ProductType);
+                inventorysList.add(i);
             }
             rs.close();
             stm.close();
@@ -100,4 +99,48 @@ public class ProductDAO extends DBContext {
         return inventorysList;
     }
 
+    // Delete product
+    public boolean deleteProduct(int ProductID) {
+        String sql = "DELETE FROM Inventory\n"
+                + "      WHERE ProductID = ?";
+        boolean rowDeleted;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setInt(1, ProductID);
+            stm.executeUpdate();
+            rowDeleted = stm.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return false;
+    }
+
+    // Update product
+    public boolean updateProduct(Inventory product) {
+        String sql = "UPDATE [dbo].[Inventory]\n"
+                + "   SET [ProductID] = ?\n"
+                + "      ,[ProductType] = ?\n"
+                + "      ,[Name] = ?\n"
+                + "      ,[Brand] = ?\n"
+                + "      ,[MadeIn] = ?\n"
+                + "      ,[Price] = ?\n"
+                + "      ,[ProductTypeID] = ?\n"
+                + " WHERE [ProductID] =?";
+        boolean rowUpdated = false;
+        try {
+            stm.setString(1, product.getProductID());
+            stm.setString(1, product.getProductType());
+            stm.setString(2, product.getName());
+            stm.setString(3, product.getBrand());
+            stm.setString(4, product.getMadeIn());
+            stm.setDouble(5, Double.parseDouble(product.getPrice()));
+            stm.setString(6, product.getProductTypeID());
+
+            rowUpdated = stm.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return rowUpdated;
+    }
 }
