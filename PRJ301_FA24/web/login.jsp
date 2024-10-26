@@ -111,7 +111,7 @@
                 <div class="social-buttons">
                     <a href="https://www.facebook.com/login.php/" class="facebook">Facebook</a>
                     <a href="https://accounts.google.com" class="google">Google</a>
-                    <a href="#" class="twitter">Twitter</a>
+                    <a href="https://x.com/i/flow/login" class="twitter">Twitter</a>
                 </div>
                 <div class="newsletter">
                     <input type="checkbox"> Remember Password
