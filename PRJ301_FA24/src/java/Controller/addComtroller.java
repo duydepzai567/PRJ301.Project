@@ -13,16 +13,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author DUCDUY2003
  */
-@WebServlet(name = "ProductController", urlPatterns = {"/productlist"})
-public class ProductController extends HttpServlet {
+@WebServlet(name = "addComtroller", urlPatterns = {"/add"})
+public class addComtroller extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,6 +32,7 @@ public class ProductController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
 
     }
 
@@ -50,22 +48,7 @@ public class ProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        HttpSession session = request.getSession(false); // false means do not create if it doesn't exist
-
-        if (session == null || session.getAttribute("user") == null) {
-            // If there is no session or user is not logged in, redirect to login page
-            response.sendRedirect("login.jsp");
-            return;
-        }
-
-        //get data from dao
-        ProductDAO dao = new ProductDAO();
-        List<Inventory> list = dao.getAll();
-
-        request.setAttribute("list", list);
-        request.getRequestDispatcher("ProductList.jsp").forward(request, response);
-
+        request.getRequestDispatcher("addProduct.jsp").forward(request, response);
     }
 
     /**
@@ -79,7 +62,30 @@ public class ProductController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doGet(request, response);
+        String ProductID = request.getParameter("ProductID");
+        String ProductType = request.getParameter("ProductType");
+        String Name = request.getParameter("Name");
+        String Brand = request.getParameter("Brand");
+        String MadeIn = request.getParameter("MadeIn");
+        String Price = request.getParameter("Price");
+        String typeID = request.getParameter("ProductTypeID");
+
+        // Create an instance of ProductDAO to interact with the database
+        ProductDAO dao = new ProductDAO();
+
+        try {
+            // Insert product into the database
+            dao.insert(ProductID, ProductType, Name, Brand, MadeIn, Price, typeID);
+            // Redirect to a success page or display a success message
+            response.sendRedirect("productlist");
+        } catch (Exception e) {
+            // Log and handle any errors
+            System.out.println("Error inserting product: " + e.getMessage());
+            request.setAttribute("errorMessage", "Error inserting product. Please try again.");
+            request.getRequestDispatcher("addProduct.jsp").forward(request, response);
+
+        }
+
     }
 
     /**

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : edit
-    Created on : Oct 23, 2024, 3:26:02 PM
+    Document   : error
+    Created on : Oct 27, 2024, 12:23:23 AM
     Author     : DUCDUY2003
 --%>
 
@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Error xxxxx! Come Back</h1>
     </body>
 </html>

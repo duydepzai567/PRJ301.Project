@@ -79,6 +79,11 @@ public class Inventory {
     public void setProductTypeID(String ProductTypeID) {
         this.ProductTypeID = ProductTypeID;
     }
+
+    @Override
+    public String toString() {
+        return "Inventory{" + "ProductID=" + ProductID + ", ProductType=" + ProductType + ", Name=" + Name + ", Brand=" + Brand + ", MadeIn=" + MadeIn + ", Price=" + Price + ", ProductTypeID=" + ProductTypeID + '}';
+    }
     
     
 }

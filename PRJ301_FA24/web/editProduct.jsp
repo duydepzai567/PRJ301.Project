@@ -1,16 +1,15 @@
 <%-- 
-    Document   : addProduct
-    Created on : Oct 23, 2024, 3:26:26 PM
+    Document   : edit
+    Created on : Oct 23, 2024, 3:26:02 PM
     Author     : DUCDUY2003
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Add New Product</title>
+        <title>Edit Product</title>
         <style>
             /* Basic styling for the form */
             .form-container {
@@ -53,11 +52,13 @@
     <body>
 
         <div class="form-container">
-            <h2>Add New Product</h2>
-            <form action="add" method="post">
+            <h2>Edit Product List</h2>
+
+            <form action="update" method="post">
+
                 <div class="form-group">
                     <label for="productID">Product ID:</label>
-                    <input type="text" id="productID" name="ProductID" required>
+                    <input type="text" id="productID" name="ProductID" value="">
                 </div>
                 <div class="form-group">
                     <label for="productType">Product Type:</label>
@@ -82,22 +83,26 @@
                 </div>
                 <div class="form-group">
                     <label for="name">Product Name:</label>
-                    <input type="text" id="name" name="Name" required>
+                    <input type="text" id="name" name="Name" value="" required>
                 </div>
                 <div class="form-group">
                     <label for="brand">Brand:</label>
-                    <input type="text" id="brand" name="Brand" required>
+                    <input type="text" id="brand" name="Brand" value="" required>
                 </div>
                 <div class="form-group">
                     <label for="madeIn">Made In:</label>
-                    <input type="text" id="madeIn" name="MadeIn" required>
+                    <input type="text" id="madeIn" name="MadeIn" value="" required>
                 </div>
                 <div class="form-group">
                     <label for="price">Price:</label>
-                    <input type="number" id="price" name="Price" step="1" required>
+                    <input type="number" id="price" name="Price" value="" required>
                 </div>
                 <div class="form-group">
-                    <button type="submit">Add Product</button>
+                    <label for="price">Product Type ID: </label>
+                    <input type="text" name="ProductTypeID" value="" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" value="Update">Update</button>
                 </div>
             </form>
         </div>

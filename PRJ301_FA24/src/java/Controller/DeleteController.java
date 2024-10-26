@@ -4,8 +4,8 @@
  */
 package Controller;
 
-import dao.ProductDAO;
 import model.Inventory;
+import dao.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,16 +13,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author DUCDUY2003
  */
-@WebServlet(name = "ProductController", urlPatterns = {"/productlist"})
-public class ProductController extends HttpServlet {
+@WebServlet(name = "DeleteController", urlPatterns = {"/delete"})
+public class DeleteController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -51,21 +48,13 @@ public class ProductController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        HttpSession session = request.getSession(false); // false means do not create if it doesn't exist
-
-        if (session == null || session.getAttribute("user") == null) {
-            // If there is no session or user is not logged in, redirect to login page
-            response.sendRedirect("login.jsp");
-            return;
-        }
-
-        //get data from dao
+        // get pID from jsp
+        String ProductID = request.getParameter("ProductID");
+        
+        //pass ProductID to dao
         ProductDAO dao = new ProductDAO();
-        List<Inventory> list = dao.getAll();
-
-        request.setAttribute("list", list);
-        request.getRequestDispatcher("ProductList.jsp").forward(request, response);
-
+        dao.deleteProduct(ProductID);
+        response.sendRedirect("productlist");
     }
 
     /**
@@ -79,7 +68,7 @@ public class ProductController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doGet(request, response);
+        processRequest(request, response);
     }
 
     /**

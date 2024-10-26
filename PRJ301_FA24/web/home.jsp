@@ -42,7 +42,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="http://localhost:8080/PRJ301_FA24/productlist" class="nav-link">
                                     <i class="nav-icon fas fa-cog"></i>
                                     <p>Quản lý thiết bị</p>
                                 </a>

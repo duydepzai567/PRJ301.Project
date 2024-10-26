@@ -4,6 +4,7 @@
     Author     : DUCDUY2003
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,7 +15,7 @@
     <body>
         <div class="container">
             <h2 class="mt-4">Product List</h2>
-            <a href="new" class="btn btn-success mb-3">+ Add New</a>
+            <a href="addProduct.jsp" class="btn btn-success mb-3">+ Add New</a>
 
             <table class="table table-bordered">
                 <thead>
@@ -27,28 +28,23 @@
                         <th>Price</th>
                         <th>Actions</th>
                     </tr>
+                    <c:forEach items="${list}" var="x" >
                 </thead>
-                <tbody>
-                    <%
-                        List<Product> listProduct = (List<Product>) request.getAttribute("listProduct");
-                        for (Product product : listProduct) {
-                    %>
+                <tbody>                   
                     <tr>
-                        <td><%= product.getId() %></td>
-                        <td><%= product.getType() %></td>
-                        <td><%= product.getName() %></td>
-                        <td><%= product.getBrand() %></td>
-                        <td><%= product.getMadeIn() %></td>
-                        <td><%= product.getPrice() %></td>
+                        <td>${x.getProductID()}</td>
+                        <td>${x.getProductType()}</td>
+                        <td>${x.getName()}</td>
+                        <td>${x.getBrand()}</td>
+                        <td>${x.getMadeIn()}</td>
+                        <td>${x.getPrice()}</td>                 
                         <td>
-                            <a href="edit?id=<%= product.getId() %>" class="btn btn-primary">Edit</a>
-                            <a href="delete?id=<%= product.getId() %>" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                            <a href="update?ProductID=${x.getProductID()}" class="btn btn-primary">Edit</a>
+                            <a href="delete?ProductID=${x.getProductID()}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
                         </td>
                     </tr>
-                    <%
-                        }
-                    %>
                 </tbody>
+                </c:forEach>
             </table>
         </div>
     </body>

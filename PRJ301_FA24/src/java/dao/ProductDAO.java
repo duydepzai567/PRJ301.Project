@@ -20,25 +20,19 @@ public class ProductDAO extends DBContext {
     ResultSet rs;
 
     // Create or insert product
-    public void insert(Inventory i) {
+    public void insert(String ProductID, String ProductType, String Name, String Brand, String MadeIn, String Price, String ProductTypeID) {
+        String sql = "INSERT INTO [dbo].[Inventory] ([ProductID], [ProductType], [Name], [Brand], [MadeIn], [Price], [ProductTypeID]) VALUES (?,?,?,?,?,?,?)";
         try {
-            String sql = "INSERT INTO Inventory\n"
-                    + "           (ProductType\n"
-                    + "           ,Name\n"
-                    + "           ,Brand\n"
-                    + "           ,MadeIn\n"
-                    + "           ,Price\n"
-                    + "           ,ProductTypeID)\n"
-                    + "     VALUES\n"
-                    + "           (?, ?, ?, ?, ?, ?)";
             stm = connection.prepareStatement(sql);
-            stm.setString(1, i.getProductType());
-            stm.setString(2, i.getName());
-            stm.setString(3, i.getBrand());
-            stm.setString(4, i.getMadeIn());
-            stm.setDouble(5, Double.parseDouble(i.getPrice()));
-            stm.setInt(6, Integer.parseInt(i.getProductTypeID()));
+            stm.setString(1, ProductID);
+            stm.setString(2, ProductType);
+            stm.setString(3, Name);
+            stm.setString(4, Brand);
+            stm.setString(5, MadeIn);
+            stm.setString(6, Price);
+            stm.setString(7, ProductTypeID);
             stm.executeUpdate();
+            System.out.println("Product inserted successfully.");
         } catch (SQLException e) {
             System.out.println("Error inserting product: " + e.getMessage());
         }
@@ -67,80 +61,65 @@ public class ProductDAO extends DBContext {
     }
 
     //select all product
-    public List<Inventory> selectAll() {
-        List<Inventory> inventorysList = new ArrayList<>();
+    public List<Inventory> getAll() {
+        List<Inventory> list = new ArrayList<Inventory>();
         try {
-            String sql = "SELECT ProductID\n"
-                    + "      ,ProductType\n"
-                    + "      ,Name\n"
-                    + "      ,Brand\n"
-                    + "      ,MadeIn\n"
-                    + "      ,Price\n"
-                    + "  FROM Inventory";
+            String sql = "select * from Inventory";
             stm = connection.prepareStatement(sql);
-            rs = stm.executeQuery(sql);
+            rs = stm.executeQuery();
             while (rs.next()) {
                 String ProductID = String.valueOf(rs.getInt(1));
                 String ProductType = rs.getString(2);
-                String Name = rs.getString(2);
-                String Brand = rs.getString(2);
-                String MadeIn = rs.getString(2);
-                String Price = String.valueOf(rs.getDouble(4));
+                String Name = rs.getString(3);
+                String Brand = rs.getString(4);
+                String MadeIn = rs.getString(5);
+                String Price = String.valueOf(rs.getDouble(6));
 
                 Inventory i = new Inventory(ProductID, ProductType, Name, Brand, MadeIn, Price, ProductType);
-                inventorysList.add(i);
+                list.add(i);
             }
-            rs.close();
-            stm.close();
-
         } catch (SQLException e) {
-            System.out.println(e);
+            System.out.println("getAll(): " + e.getMessage());
         }
-        return inventorysList;
+        return list;
     }
 
     // Delete product
-    public boolean deleteProduct(int ProductID) {
+    public void deleteProduct(String ProductID) {
         String sql = "DELETE FROM Inventory\n"
                 + "      WHERE ProductID = ?";
-        boolean rowDeleted;
         try {
             stm = connection.prepareStatement(sql);
-            stm.setInt(1, ProductID);
+            stm.setString(1, ProductID);
             stm.executeUpdate();
-            rowDeleted = stm.executeUpdate() > 0;
 
         } catch (SQLException e) {
             System.out.println(e);
         }
-        return false;
     }
 
-    // Update product
-    public boolean updateProduct(Inventory product) {
+    // Edit product
+    public void updateProduct(String ProductID, String ProductType, String Name, String Brand, String MadeIn, String Price, String ProductTypeID) {
         String sql = "UPDATE [dbo].[Inventory]\n"
-                + "   SET [ProductID] = ?\n"
-                + "      ,[ProductType] = ?\n"
+                + "   SET [ProductType] = ?\n"
                 + "      ,[Name] = ?\n"
                 + "      ,[Brand] = ?\n"
                 + "      ,[MadeIn] = ?\n"
                 + "      ,[Price] = ?\n"
                 + "      ,[ProductTypeID] = ?\n"
                 + " WHERE [ProductID] =?";
-        boolean rowUpdated = false;
         try {
-            stm.setString(1, product.getProductID());
-            stm.setString(1, product.getProductType());
-            stm.setString(2, product.getName());
-            stm.setString(3, product.getBrand());
-            stm.setString(4, product.getMadeIn());
-            stm.setDouble(5, Double.parseDouble(product.getPrice()));
-            stm.setString(6, product.getProductTypeID());
-
-            rowUpdated = stm.executeUpdate() > 0;
+            stm = connection.prepareStatement(sql);
+            stm.setString(1, ProductType);
+            stm.setString(2, Name);
+            stm.setString(3, Brand);
+            stm.setString(4, MadeIn);
+            stm.setString(5, Price);
+            stm.setString(6, ProductTypeID);
+            stm.setString(7, ProductID);
+            stm.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e);
         }
-        return rowUpdated;
     }
+
 }
