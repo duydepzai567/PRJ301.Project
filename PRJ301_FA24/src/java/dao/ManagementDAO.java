@@ -111,4 +111,30 @@ public class ManagementDAO extends DBContext {
         }
     }
 
+    public List<Management> getManaS() {
+        List<Management> list = new ArrayList<>();
+        String sql = " select distinct ProductID\n"
+                + "  from Management";
+        try {
+            stm = connection.prepareStatement(sql);
+            rs = stm.executeQuery();
+            while (rs.next()) {
+                String IOputID = String.valueOf(rs.getInt(1));
+                String CustomerID = String.valueOf(rs.getInt(2));
+                String EmployeesID = rs.getString(3);
+                String ProductID = String.valueOf(rs.getInt(4));
+                String DateofReceipt = String.valueOf(rs.getDate(5));
+                String ShippingDate = String.valueOf(rs.getDate(6));
+                String PurchasePrice = String.valueOf(rs.getDouble(7));
+                String SellingPrice = String.valueOf(rs.getDouble(8));
+
+                Management m = new Management(EmployeesID, DateofReceipt, ShippingDate, PurchasePrice, SellingPrice, IOputID, CustomerID, ProductID);
+                list.add(m);
+            }
+        } catch (SQLException e) {
+            System.out.println("getAllMana(): " + e.getMessage());
+        }
+        return list;
+    }
+
 }

@@ -13,6 +13,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  *
@@ -73,16 +74,10 @@ public class add2Controller extends HttpServlet {
 
         //get data from DAO
         ManagementDAO dao = new ManagementDAO();
+        List<Management> list = dao.getManaS();
 
-        //get data to jsp
-        try {
-            dao.insert(EmployeesID, DateofReceipt, ShippingDate, PurchasePrice, SellingPrice, IOputID, CustomerID, ProductID);
-            response.sendRedirect("manalist");
-        } catch (Exception e) {
-            System.out.println("Error inserting management: " + e.getMessage());
-            request.setAttribute("errorMessage", "Error inserting management. Please try again.");
-            request.getRequestDispatcher("add2.jsp").forward(request, response);
-        }
+        request.setAttribute("ListX",list);
+        response.sendRedirect("manalist");
 
     }
 

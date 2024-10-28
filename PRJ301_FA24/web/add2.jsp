@@ -56,20 +56,46 @@
             <h2>Add New Management</h2>
             <form action="addmanage" method="post">
                 <div class="form-group">
-                    <label for="ioputID">IOput ID: </label>
+                    <label for="ioputID">IOput ID:</label>
                     <input type="text" id="ioputID" name="IOputID" required>
                 </div>
                 <div class="form-group">
-                    <label for="customerID">Customer ID: </label>
-                    <input type="text" id="customerID" name="CustomerID" required>
+                    <label for="customerID">Customer ID:</label>
+                    <select>
+                        <c:forEach var="c" items="${ListX}">
+                            <option>${c.getCustomerID()}</option>
+                        </c:forEach>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="employeesID">Employees ID: </label>
-                    <input type="text" id="employeesID" name="EmployeesID" required>
+                    <label for="employeesID">Employees ID:</label>
+                    <select id="employeesID" name="EmployeesID" required>
+                        <option value="">-- Select --</option>
+                        <option value="A1">A1</option>
+                        <option value="A2">A2</option>
+                        <option value="B3">B3</option>
+                        <option value="B4">B4</option>
+                        <option value="C5">C5</option>
+                        <option value="C6">C6</option>
+                        <option value="D7">D7</option>
+                        <option value="D8">D8</option>
+                        <option value="E9">E9</option>
+                        <option value="E10">E10</option>                      
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="productID">Product ID: </label>
-                    <input type="text" id="productID" name="ProductID" required>
+                    <select id="productID" name="ProductID" required>
+                        <option value="">-- Select --</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>                   
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="dateofReceipt">Date of Receipt: </label>
