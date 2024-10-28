@@ -15,7 +15,10 @@
     <body>
         <div class="container">
             <h2 class="mt-4">Product List</h2>
-            <a href="addProduct.jsp" class="btn btn-success mb-3">+ Add New</a>
+            <a href="addProduct.jsp" class="btn btn-success mb-3">➕ Add New</a>
+            <a href="http://localhost:8080/PRJ301_FA24/home.jsp" class="btn btn-success mb-3">🏠 Home</a>
+            <a href="logout" class="btn btn-success mb-3">Logout</a>
+
 
             <table class="table table-bordered">
                 <thead>
@@ -29,21 +32,21 @@
                         <th>Actions</th>
                     </tr>
                     <c:forEach items="${list}" var="x" >
-                </thead>
-                <tbody>                   
-                    <tr>
-                        <td>${x.getProductID()}</td>
-                        <td>${x.getProductType()}</td>
-                        <td>${x.getName()}</td>
-                        <td>${x.getBrand()}</td>
-                        <td>${x.getMadeIn()}</td>
-                        <td>${x.getPrice()}</td>                 
-                        <td>
-                            <a href="update?ProductID=${x.getProductID()}" class="btn btn-primary">Edit</a>
-                            <a href="delete?ProductID=${x.getProductID()}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
-                        </td>
-                    </tr>
-                </tbody>
+                    </thead>
+                    <tbody>                   
+                        <tr>
+                            <td>${x.getProductID()}</td>
+                            <td>${x.getProductType()}</td>
+                            <td>${x.getName()}</td>
+                            <td>${x.getBrand()}</td>
+                            <td>${x.getMadeIn()}</td>
+                            <td>${x.getPrice()}</td>                 
+                            <td>
+                                <a href="update?ProductID=${x.getProductID()}" class="btn btn-primary">Edit</a>
+                                <a href="delete?ProductID=${x.getProductID()}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
                 </c:forEach>
             </table>
         </div>

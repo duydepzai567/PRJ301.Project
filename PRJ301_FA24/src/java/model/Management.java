@@ -4,7 +4,6 @@
  */
 package model;
 
-import java.util.logging.Logger;
 
 /**
  *
@@ -90,6 +89,11 @@ public class Management {
 
     public void setProductID(String ProductID) {
         this.ProductID = ProductID;
+    }
+
+    @Override
+    public String toString() {
+        return "Management{" + "EmployeesID=" + EmployeesID + ", DateofReceipt=" + DateofReceipt + ", ShippingDate=" + ShippingDate + ", PurchasePrice=" + PurchasePrice + ", SellingPrice=" + SellingPrice + ", IOputID=" + IOputID + ", CustomerID=" + CustomerID + ", ProductID=" + ProductID + '}';
     }
 
 }

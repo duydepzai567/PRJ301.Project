@@ -8,31 +8,39 @@ package model;
  * @author DUCDUY2003
  */
 public class ProductTypeList {
-    String ProductTypeList, Name;
+    String ProductTypeID, Name;
 
     public ProductTypeList() {
     }
 
-    public ProductTypeList(String ProductTypeList, String Name) {
-        this.ProductTypeList = ProductTypeList;
+    public ProductTypeList(String ProductTypeID, String Name) {
+        this.ProductTypeID = ProductTypeID;
         this.Name = Name;
     }
 
-    public String getProductTypeList() {
-        return ProductTypeList;
+    public String getProductTypeID() {
+        return ProductTypeID;
     }
 
     public String getName() {
         return Name;
     }
 
-    public void setProductTypeList(String ProductTypeList) {
-        this.ProductTypeList = ProductTypeList;
+    public void setProductTypeID(String ProductTypeID) {
+        this.ProductTypeID = ProductTypeID;
     }
 
     public void setName(String Name) {
         this.Name = Name;
     }
+
+    @Override
+    public String toString() {
+        return "ProductTypeList{" + "ProductTypeID=" + ProductTypeID + ", Name=" + Name + '}';
+    }
+
+   
+    }
     
     
-}
+

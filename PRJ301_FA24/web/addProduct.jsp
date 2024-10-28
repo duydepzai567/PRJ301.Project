@@ -65,7 +65,7 @@
                         <option value="">-- Select a Product Type --</option>
                         <option value="Thiết bị điện tử">Thiết bị điện tử</option>
                         <option value="Đồ gia dụng">Đồ gia dụng</option>
-                        <option value="Vật kiệu xây dựng">Vật kiệu xây dựng</option>
+                        <option value="Vật kiệu xây dựng">Vật liệu xây dựng</option>
                         <option value="Thiết bị văn Phòng">Thiết bị văn Phòng</option>
                         <option value="Thực phẩm">Thực phẩm</option>
                         <option value="Nội thất">Nội thất</option>

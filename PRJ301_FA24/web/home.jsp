@@ -36,31 +36,37 @@
                     <nav class="mt-2">
                         <ul class="nav nav-pills nav-sidebar flex-column" role="menu">                 
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="manalist" class="nav-link">
                                     <i class="nav-icon fas fa-cog"></i>
                                     <p>Quản lý xuất nhập kho</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="http://localhost:8080/PRJ301_FA24/productlist" class="nav-link">
+                                <a href="productlist" class="nav-link">
                                     <i class="nav-icon fas fa-cog"></i>
-                                    <p>Quản lý thiết bị</p>
+                                    <p>Quản lý sản phẩm</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="prolist" class="nav-link">
                                     <i class="nav-icon fas fa-cog"></i>
-                                    <p>Danh mục thiết bị</p>
+                                    <p>Danh mục sản phẩm</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="clist" class="nav-link">
+                                    <i class="nav-icon fas fa-cog"></i>
+                                    <p>Danh sách khách hàng</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="employeelist" class="nav-link">
                                     <i class="nav-icon fas fa-users"></i>
                                     <p>Quản lý nhân viên</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="listaccount" class="nav-link">
                                     <i class="nav-icon fas fa-user-cog"></i>
                                     <p>Tài Khoản</p>
                                 </a>
@@ -99,7 +105,7 @@
                             <div class="col-lg-3 col-6">
                                 <div class="small-box bg-info">
                                     <div class="inner">
-                                        <h3>3</h3>
+                                        <h3>83</h3>
                                         <p>Products</p>
                                     </div>
                                     <div class="icon">
@@ -112,7 +118,7 @@
                             <div class="col-lg-3 col-6">
                                 <div class="small-box bg-success">
                                     <div class="inner">
-                                        <h3>21</h3>
+                                        <h3>86</h3>
                                         <p>Product Types</p>
                                     </div>
                                     <div class="icon">
@@ -125,7 +131,7 @@
                             <div class="col-lg-3 col-6">
                                 <div class="small-box bg-warning">
                                     <div class="inner">
-                                        <h3>10</h3>
+                                        <h3>66</h3>
                                         <p>User Registrations</p>
                                     </div>
                                     <div class="icon">
@@ -138,7 +144,7 @@
                             <div class="col-lg-3 col-6">
                                 <div class="small-box bg-danger">
                                     <div class="inner">
-                                        <h3>0</h3>
+                                        <h3>33</h3>
                                         <p>Unique Visitors</p>
                                     </div>
                                     <div class="icon">

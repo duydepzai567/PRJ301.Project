@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+    <title>Log In</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -95,7 +95,7 @@
 <body>
     <div class="container">
         <div class="form-section">
-            <h2>Sign up into your account</h2>
+            <h2>Login your account</h2>
             <form action="login" method="POST">
 
                 <div class="form-group">
@@ -117,7 +117,7 @@
                     <input type="checkbox"> Remember Password
                 </div>
                 <button class="signup-btn" type="submit">Login</button>
-                <a href="#" class="login-link">Already have an account? Log in</a>
+                <a href="#" class="login-link">Don't have an account? Sign up</a>
                 <div class="footer">
                     Copyright &copy; Website by diey 2024
                 </div>
