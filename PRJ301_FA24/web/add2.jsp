@@ -61,11 +61,13 @@
                 </div>
                 <div class="form-group">
                     <label for="customerID">Customer ID:</label>
-                    <select>
+                    <select id="customerID" name="CustomerID" required>
+                        <option value="">-- Select Customer ID --</option>
                         <c:forEach var="c" items="${ListX}">
-                            <option>${c.getCustomerID()}</option>
+                            <option value="${c.getCustomerID()}">${c.getCustomerID()}</option>
                         </c:forEach>
                     </select>
+
                 </div>
                 <div class="form-group">
                     <label for="employeesID">Employees ID:</label>

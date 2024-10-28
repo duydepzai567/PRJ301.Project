@@ -49,6 +49,10 @@ public class add2Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        ManagementDAO dao = new ManagementDAO();
+        List<String> list = dao.getManaS();
+        
+        request.setAttribute("ListX", list);
         request.getRequestDispatcher("add2.jsp").forward(request, response);
     }
 
@@ -74,11 +78,8 @@ public class add2Controller extends HttpServlet {
 
         //get data from DAO
         ManagementDAO dao = new ManagementDAO();
-        List<Management> list = dao.getManaS();
-
-        request.setAttribute("ListX",list);
+        dao.insert(EmployeesID, DateofReceipt, ShippingDate, PurchasePrice, SellingPrice, IOputID, CustomerID, ProductID);
         response.sendRedirect("manalist");
-
     }
 
     /**
