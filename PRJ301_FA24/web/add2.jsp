@@ -67,8 +67,7 @@
                             <option value="${c.getCustomerID()}">${c.getCustomerID()}</option>
                         </c:forEach>
                     </select>
-                </div>
-                
+                </div>                
                 <div class="form-group">
                     <label for="employeesID">Employees ID:</label>
                     <select id="employeesID" name="EmployeesID" required>
