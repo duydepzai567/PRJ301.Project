@@ -62,41 +62,29 @@
                 <div class="form-group">
                     <label for="customerID">Customer ID:</label>
                     <select id="customerID" name="CustomerID" required>
-                        <option value="">-- Select Customer ID --</option>
-                        <c:forEach var="c" items="${ListX}">
+                        <option value="value">----- Select a Customer ID -----</option>
+                        <c:forEach var="c" items="${da1}">
                             <option value="${c.getCustomerID()}">${c.getCustomerID()}</option>
                         </c:forEach>
                     </select>
-
                 </div>
+                
                 <div class="form-group">
                     <label for="employeesID">Employees ID:</label>
                     <select id="employeesID" name="EmployeesID" required>
-                        <option value="">-- Select --</option>
-                        <option value="A1">A1</option>
-                        <option value="A2">A2</option>
-                        <option value="B3">B3</option>
-                        <option value="B4">B4</option>
-                        <option value="C5">C5</option>
-                        <option value="C6">C6</option>
-                        <option value="D7">D7</option>
-                        <option value="D8">D8</option>
-                        <option value="E9">E9</option>
-                        <option value="E10">E10</option>                      
+                        <option value="value">----- Select a Employees ID -----</option>
+                        <c:forEach var="e" items="${da2}">
+                            <option value="${e.getEmployeesID()}">${e.getEmployeesID()}</option>
+                        </c:forEach>                   
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="productID">Product ID: </label>
                     <select id="productID" name="ProductID" required>
-                        <option value="">-- Select --</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>                   
+                        <option value="">----- Select a Product ID -----</option>
+                        <c:forEach var="p" items="${da3}">
+                            <option value="${p.getProductID()}">${p.getProductID()}</option>
+                        </c:forEach>            
                     </select>
                 </div>
                 <div class="form-group">

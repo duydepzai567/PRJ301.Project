@@ -79,6 +79,11 @@ public class Employees {
     public void setEmail(String Email) {
         this.Email = Email;
     }
+
+    @Override
+    public String toString() {
+        return "Employees{" + "EmployeesID=" + EmployeesID + ", Name=" + Name + ", Birthday=" + Birthday + ", JoinDate=" + JoinDate + ", Address=" + Address + ", Phone=" + Phone + ", Email=" + Email + '}';
+    }
     
     
 }

@@ -9,6 +9,8 @@ import dal.DBContext;
 import java.util.ArrayList;
 import java.util.List;
 import model.Management;
+import model.Customers;
+import model.Employees;
 
 /**
  *
@@ -110,19 +112,100 @@ public class ManagementDAO extends DBContext {
         } catch (SQLException e) {
         }
     }
-
-    public List<String> getManaS() {
-        List<String> list = new ArrayList<>();
+//-----------------------------------------------------------------------------------------------------------
+    public ArrayList<Management> getCustomer() {
+        ArrayList<Management> data1 = new ArrayList<>();
         String sql = "SELECT DISTINCT CustomerID FROM Management";
-        try (PreparedStatement stm = connection.prepareStatement(sql); ResultSet rs = stm.executeQuery()) {
+        try {
+            stm = connection.prepareStatement(sql);
+            rs = stm.executeQuery();
 
             while (rs.next()) {
-                list.add(rs.getString("CustomerID"));
+                String customerId = rs.getString("CustomerID");
+                Management management = new Management();
+                management.setCustomerID(customerId); // Assuming there's a setCustomerID method
+                data1.add(management);
             }
         } catch (SQLException e) {
-            System.out.println("Error in getManaS(): " + e.getMessage());
+            System.out.println("Error in getCustomer(): " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Error closing resources: " + ex.getMessage());
+            }
+        }
+        return data1;
+    }
+
+    public ArrayList<Management> getEmployees() {
+        ArrayList<Management> list = new ArrayList<>();
+        String sql = "SELECT DISTINCT EmployeesID FROM Management";
+        try {
+            stm = connection.prepareStatement(sql);
+            rs = stm.executeQuery();
+
+            while (rs.next()) {
+                String employeesID = rs.getString("EmployeesID");
+                Management ep = new Management();
+                ep.setEmployeesID(employeesID); // Assuming there's a setCustomerID method
+                list.add(ep);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error in getEmployees(): " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Error closing resources: " + ex.getMessage());
+            }
         }
         return list;
+    }
+
+    public ArrayList<Management> getProducts() {
+        ArrayList<Management> pro = new ArrayList<>();
+        String sql = "SELECT DISTINCT ProductID FROM Management";
+        try {
+            stm = connection.prepareStatement(sql);
+            rs = stm.executeQuery();
+            while (rs.next()) {
+                String productID = rs.getString("ProductID");
+                Management p = new Management();
+                p.setProductID(productID); // Assuming there's a setProductID method
+                pro.add(p);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error in getProducts(): " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Error closing resources: " + ex.getMessage());
+            }
+        }
+        return pro;
     }
 
 }

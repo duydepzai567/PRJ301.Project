@@ -3,18 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package TestDAO;
+
 import dao.ManagementDAO;
-import java.util.List;
+import java.util.ArrayList;
 import model.Management;
+
 /**
  *
  * @author DUCDUY2003
  */
 public class NewClass3 {
-     public static void main(String[] args) {
+
+    public static void main(String[] args) {
         ManagementDAO dao = new ManagementDAO();
-        List<String> list = dao.getManaS();
-        for (String o : list) {
+        ArrayList<Management> list = dao.getEmployees();
+        for (Management o : list) {
             System.out.println(o);
 
         }

@@ -7,13 +7,12 @@ package Controller2;
 import dao.ManagementDAO;
 import model.Management;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
@@ -49,10 +48,19 @@ public class add2Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ManagementDAO dao = new ManagementDAO();
-        List<String> list = dao.getManaS();
+
+        ManagementDAO dao1 = new ManagementDAO();
+        ArrayList<Management> data1 = dao1.getCustomer();
+        request.setAttribute("da1", data1);
+
+        ManagementDAO dao2 = new ManagementDAO();
+        ArrayList<Management> list = dao2.getEmployees();
+        request.setAttribute("da2", list);
         
-        request.setAttribute("ListX", list);
+        ManagementDAO dao3 = new ManagementDAO();
+        ArrayList<Management> pro = dao3.getProducts();
+        request.setAttribute("da3", pro);
+
         request.getRequestDispatcher("add2.jsp").forward(request, response);
     }
 
@@ -67,6 +75,7 @@ public class add2Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         String IOputID = request.getParameter("IOputID");
         String CustomerID = request.getParameter("CustomerID");
         String EmployeesID = request.getParameter("EmployeesID");
@@ -80,6 +89,7 @@ public class add2Controller extends HttpServlet {
         ManagementDAO dao = new ManagementDAO();
         dao.insert(EmployeesID, DateofReceipt, ShippingDate, PurchasePrice, SellingPrice, IOputID, CustomerID, ProductID);
         response.sendRedirect("manalist");
+
     }
 
     /**

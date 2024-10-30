@@ -16,7 +16,7 @@
     <body>
         <div class="container">
             <h2 class="mt-4">Management List</h2>
-            <a href="add2.jsp" class="btn btn-success mb-3">➕ Add New</a>
+            <a href="addmanage" class="btn btn-success mb-3">➕ Add New</a>
             <a href="http://localhost:8080/PRJ301_FA24/home.jsp" class="btn btn-success mb-3">🏠 Home</a>
             <a href="logout" class="btn btn-success mb-3">Logout</a>
 
