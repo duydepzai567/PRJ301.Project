@@ -11,6 +11,7 @@
 <html>
     <head>
         <title>Warehouse Entry and Export</title>
+        <link rel="icon" type="image/x-icon" href="https://media.istockphoto.com/id/1323626703/vi/vec-to/bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-logo-nh%C3%A0-ch%E1%BB%AF-h-home-house.jpg?s=612x612&w=0&k=20&c=ppjNTys-kNJzarTudonu0wL8thGAz3o_zlaZHocA1Fk=" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     </head>
     <body>
@@ -33,7 +34,7 @@
                         <th>Selling Price</th>
                         <th>Actions</th>
                     </tr>
-                <c:forEach items="${listS}" var="m" >
+                    <c:forEach items="${listS}" var="m" >
                     </thead>
                     <tbody>                   
                         <tr>

@@ -9,13 +9,14 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="icon" type="image/x-icon" href="https://media.istockphoto.com/id/1323626703/vi/vec-to/bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-logo-nh%C3%A0-ch%E1%BB%AF-h-home-house.jpg?s=612x612&w=0&k=20&c=ppjNTys-kNJzarTudonu0wL8thGAz3o_zlaZHocA1Fk=" />
         <title>Customer List</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     </head>
     <body>
         <div class="container">
             <h2 class="mt-4">Customer List</h2>
-            <a href="#" class="btn btn-success mb-3">➕ Add New</a>
+            <a href="addcustomer" class="btn btn-success mb-3">➕ Add New</a>
             <a href="http://localhost:8080/PRJ301_FA24/home.jsp" class="btn btn-success mb-3">🏠 Home</a>
             <a href="logout" class="btn btn-success mb-3">Logout</a>
 
@@ -39,8 +40,8 @@
                             <td>${x.getPhone()}</td>               
                             <td>${x.getEmail()}</td>                            
                             <td>
-                                <a href="#" class="btn btn-primary">Edit</a>
-                                <a href="#" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                                <a href="updatecu?CustomerID=${x.getCustomerID()}" class="btn btn-primary">Edit</a>
+                                <a href="deletecustomer?CustomerID=${x.getCustomerID()}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
                             </td>
                         </tr>
                     </tbody>

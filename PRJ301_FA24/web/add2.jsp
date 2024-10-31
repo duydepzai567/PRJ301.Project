@@ -11,6 +11,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Add New Management</title>
+        <link rel="icon" type="image/x-icon" href="https://media.istockphoto.com/id/1323626703/vi/vec-to/bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-logo-nh%C3%A0-ch%E1%BB%AF-h-home-house.jpg?s=612x612&w=0&k=20&c=ppjNTys-kNJzarTudonu0wL8thGAz3o_zlaZHocA1Fk=" />
         <style>
             /* Basic styling for the form */
             .form-container {

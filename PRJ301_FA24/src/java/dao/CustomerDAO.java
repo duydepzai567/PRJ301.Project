@@ -42,7 +42,7 @@ public class CustomerDAO extends DBContext {
         return list;
     }
 
-    // Create or insert management
+    // Create or insert Customer
     public void insert(String CustomerID, String CustomerName, String Address, String Phone, String Email) {
         String sql = "INSERT INTO [dbo].[Customers]\n"
                 + "           ([CustomerID]\n"
@@ -66,4 +66,40 @@ public class CustomerDAO extends DBContext {
             System.out.println("Error inserting customer: " + e.getMessage());
         }
     }
+
+    // Delete 
+    public void deleteCustomer(String CustomerID) {
+        String sql = "DELETE FROM [dbo].[Customers]\n"
+                + "      WHERE CustomerID = ? ";
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setString(1, CustomerID);
+            stm.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    // Edit 
+    public void update(String CustomerID, String CustomerName, String Address, String Phone, String Email) {
+        String sql = "UPDATE [dbo].[Customers]\n"
+                + "   SET [CustomerName] = ?\n"
+                + "      ,[Address] = ?\n"
+                + "      ,[Phone] = ?\n"
+                + "      ,[Email] = ?\n"
+                + " WHERE CustomerID = ?";
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setString(1, CustomerName);
+            stm.setString(2, Address);
+            stm.setString(3, Phone);
+            stm.setString(4, Email);
+            stm.setString(5, CustomerID);
+
+            stm.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
+
 }
