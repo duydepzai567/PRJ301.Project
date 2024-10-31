@@ -3,16 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package dao;
+
 import dal.DBContext;
 import model.Customers;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  *
  * @author DUCDUY2003
  */
-public class CustomerDAO extends DBContext{
+public class CustomerDAO extends DBContext {
+
     PreparedStatement stm;
     ResultSet rs;
 
@@ -37,5 +40,30 @@ public class CustomerDAO extends DBContext{
             System.out.println("getAllselectC(): " + e.getMessage());
         }
         return list;
+    }
+
+    // Create or insert management
+    public void insert(String CustomerID, String CustomerName, String Address, String Phone, String Email) {
+        String sql = "INSERT INTO [dbo].[Customers]\n"
+                + "           ([CustomerID]\n"
+                + "           ,[CustomerName]\n"
+                + "           ,[Address]\n"
+                + "           ,[Phone]\n"
+                + "           ,[Email])\n"
+                + "     VALUES\n"
+                + "           (?,?,?,?,?)";
+        try (PreparedStatement stm = connection.prepareStatement(sql)) {
+            stm.setString(1, CustomerID);
+            stm.setString(2, CustomerName);
+            stm.setString(3, Address);
+            stm.setString(4, Phone);
+            stm.setString(5, Email);
+            stm.executeUpdate();
+
+            System.out.println("Customer inserted successfully.");
+
+        } catch (SQLException e) {
+            System.out.println("Error inserting customer: " + e.getMessage());
+        }
     }
 }

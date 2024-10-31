@@ -16,7 +16,7 @@ public class NewClass3 {
 
     public static void main(String[] args) {
         ManagementDAO dao = new ManagementDAO();
-        ArrayList<Management> list = dao.getEmployees();
+        ArrayList<Management> list = dao.getProducts();
         for (Management o : list) {
             System.out.println(o);
 
