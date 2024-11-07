@@ -100,7 +100,7 @@
             <form action="login" method="POST">
 
                 <div class="form-group">
-                    <label>Username</label>
+                    <label>User Name</label>
                     <input type="text" placeholder="username" name="username" required>
                 </div>
 
