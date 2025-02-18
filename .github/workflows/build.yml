@@ -1,31 +1,19 @@
 name: Build
-
 on:
   push:
     branches:
       - main
   pull_request:
     types: [opened, synchronize, reopened]
-
 jobs:
   sonarqube:
     name: SonarQube
     runs-on: windows-latest
-
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-
-      - name: Set up SonarQube scanner
-        run: |
-          curl -sSLo sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-windows.zip
-          mkdir sonar-scanner
-          unzip sonar-scanner.zip -d sonar-scanner
-          echo "SONAR_SCANNER_HOME=$(pwd)/sonar-scanner/sonar-scanner-4.6.2.2472-windows" >> $GITHUB_ENV
-        shell: bash
-
       - name: SonarQube Scan
-        run: ./sonar-scanner/sonar-scanner-4.6.2.2472-windows/bin/sonar-scanner
+        uses: SonarSource/sonarqube-scan-action@v4
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
