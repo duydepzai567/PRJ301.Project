@@ -45,7 +45,7 @@
                             <td>${x.getEmail()}</td>               
                             <td>
                                 <a href="#" class="btn btn-primary">Edit</a>
-                                <a href="#" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                                <a href="#" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this?')">Delete</a>
                             </td>
                         </tr>
                     </tbody>
