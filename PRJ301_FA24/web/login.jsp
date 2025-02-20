@@ -105,9 +105,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>
-                        <input type="Password"/>
-                    </label>
+                    <label>Password</label>
                     <input type="password" placeholder="password" name="password" required>
                 </div>
 

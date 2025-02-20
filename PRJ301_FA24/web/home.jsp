@@ -35,7 +35,7 @@
 
                     <!-- Sidebar Menu -->
                     <nav class="mt-2">
-                        <li class="nav nav-pills nav-sidebar flex-column" role="menu">  </li>               
+                        <ul class="nav nav-pills nav-sidebar flex-column" role="menu">                 
                             <li class="nav-item">
                                 <a href="manalist" class="nav-link">
                                     <i class="nav-icon fas fa-cog"></i>
