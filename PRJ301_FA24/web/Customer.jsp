@@ -20,8 +20,6 @@
             <a href="addcustomer" class="btn btn-success mb-3">➕ Add New</a>
             <a href="http://localhost:8080/PRJ301_FA24/home.jsp" class="btn btn-success mb-3">🏠 Home</a>
             <a href="logout" class="btn btn-success mb-3">Logout</a>
-
-
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -47,6 +45,8 @@
                         </tr>
                     </tbody>
                 </c:forEach>
+                    
+                    hbhjd
             </table>
         </div>
     </body>
