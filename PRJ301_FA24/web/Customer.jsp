@@ -44,9 +44,7 @@
                             </td>
                         </tr>
                     </tbody>
-                </c:forEach>
-                    
-                    hbhjd
+                </c:forEach>                                
             </table>
         </div>
     </body>
